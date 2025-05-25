@@ -1,0 +1,22 @@
+﻿@model JabatanRequestViewModel
+@{
+}
+
+<div class="container container-fluid">
+    <form class="row g-3 bg-white mt-2  text-dark p-2 rounded shadow" method="post">
+        <h5 class="fw-bold">Jabatan Settting</h5>
+        <div class="col-12">
+            <label class="form-label">Kode Jabatan</label>
+            <input type="text" class="form-control" asp-for="KodeeJabatan" />
+        </div>
+        <div class="col-12">
+            <label class="form-label">Nama Jabatan</label>
+            <input type="text" class="form-control" asp-for="NamaJabatan" />
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary felx justify-content-between">
+                Save Data
+            </button>
+        </div>
+    </form>
+</div>

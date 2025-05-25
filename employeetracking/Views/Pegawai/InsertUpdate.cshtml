@@ -1,0 +1,50 @@
+﻿@model PegawaiRequestViewModel
+@{
+}
+
+<div class="container container-fluid">
+    <form class="row g-3 bg-white mt-2  text-dark p-2 rounded shadow" method="post">
+        <h5 class="fw-bold">Jabatan Settting</h5>
+        <div class="col-12">
+            <label class="form-label">Kode Jabatan</label>
+            <input type="text" class="form-control" asp-for="KodePegawai" />
+        </div>
+        <div class="col-12">
+            <label class="form-label">Nama Pegawai</label>
+            <input type="text" class="form-control" asp-for="NamaPegawai" />
+        </div>
+        <div class="col-12">
+            <label asp-for="JabatanPegawai" class="form-label">Jabatan</label>
+            <select asp-for="JabatanPegawai" class="form-select">
+                <option value=" ">Pilih Jabatan</option>
+                @foreach (var jabatan in Model.ListJabatan)
+                {
+                    <option value="@jabatan.IdJabatan">@jabatan.NamaJabatan</option>
+                }
+            </select>
+        </div>
+        <div class="col-12">
+            <label asp-for="CabangPegawai" class="form-label">Cabang</label>
+            <select asp-for="CabangPegawai" class="form-select">
+                <option value=" ">Pilih Cabang</option>
+                @foreach (var cabang in Model.ListCabang)
+                {
+                    <option value="@cabang.IdCabang">@cabang.NamaCabang</option>
+                }
+            </select>
+        </div>
+        <div class="col-12">
+            <label class="form-label">Taggal Masuk</label>
+            <input type="date" class="form-control" asp-for="TanggalMasuk" />
+        </div>
+        <div class="col-12">
+            <label class="form-label">Taggal Berakhir</label>
+            <input type="date" class="form-control" asp-for="TanggalBerakhir" />
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary felx justify-content-between">
+                Save Data
+            </button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,27 @@
+﻿@using employeetracking.Models.Branches
+@model CabangRequestViewModel
+@{
+}
+
+<div class="container container-fluid">
+    <form class="row g-3 bg-white mt-2  text-dark p-2 rounded shadow" method="post">
+        <h5 class="fw-bold">Jabatan Settting</h5>
+        <div class="col-12">
+            <label class="form-label">Kode Cabang</label>
+            <input type="text" class="form-control" asp-for="KodeCabang" />
+        </div>
+        <div class="col-12">
+            <label class="form-label">Nama Cabang</label>
+            <input type="text" class="form-control" asp-for="NamaCabang" />
+        </div>
+        <div class="col-12">
+            <label class="form-label">Alamat</label>
+            <input type="text" class="form-control" asp-for="AlamatCabang" />
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary felx justify-content-between">
+                Save Data
+            </button>
+        </div>
+    </form>
+</div>

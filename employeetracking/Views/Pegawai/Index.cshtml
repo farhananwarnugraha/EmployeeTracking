@@ -1,0 +1,74 @@
+﻿@using employeetracking.Models.Employees
+@model PegawaisViewModel
+@{
+}
+
+<div class="container-fluid">
+    <div class="flex justify-content-between mt-1 mb-2">
+        <i class="bi bi-pc-display-horizontal"></i>
+        <span class="fw-bold">@ViewData["heading"]</span>
+    </div>
+
+    <div class="d-flex flex-row">
+        <a class="btn btn-primary mb-1" asp-action="Import">Import Data</a>
+        <a class="btn btn-primary ms-3 mb-1" asp-action="Insert">Tambah Data</a>
+    </div>
+    @if (ViewBag.Message != null)
+    {
+        <p>@ViewBag.Message</p>
+    }
+
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Kode Pegawai</th>
+                <th scope="col">Nama Pegawai</th>
+                <th scope="col">Jabatan</th>
+                <th scope="col">Penempatan</th>
+                <th scope="col">Tanggal Masuk</th>
+                <th scope="col">Tanggal Akhir Kontrak</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                if (Model?.ListPegawai != null)
+                {
+                    foreach (var pegawai in Model.ListPegawai)
+                    {
+                        <tr>
+                            <td>@pegawai.KodePegawai</td>
+                            <td>@pegawai.NamaPegawai</td>
+                            <td>@pegawai.Jabatan</td>
+                            <td>@pegawai.Cabang</td>
+                            <td>@pegawai.TanggalMasuk</td>
+                            <td>@pegawai.TanggalBerakhir</td>
+                            <td>
+                                <a asp-action="Update" asp-route-id="@pegawai.IdPegawai" class="btn btn-warning">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@pegawai.IdPegawai" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="7">
+                    @if (Model != null)
+                    {
+                        <div class="d-flex flex-row mb-3 justify-content-between">
+                            <div>Page @Model?.Paginations?.PageIndex of @Model?.Paginations?.TotalPage</div>
+                            <div>
+                                @for (int pageNumber = 1; pageNumber <= Model?.Paginations?.TotalPage; pageNumber++)
+                                {
+                                    <a asp-action="Index" asp-route-pageNumber="@pageNumber" asp-route-namaPegawai="@Model.NamaPegawai">@pageNumber</a>
+                                }
+                            </div>
+                        </div>
+                    }
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
